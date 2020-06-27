@@ -11,5 +11,11 @@ pipeline {
            sh  "mvn clean package"
         }
       }
+    stage ("store artficat"){
+      steps {
+       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '1.0']]] 
+      }
+    
+    }
      }
   }
