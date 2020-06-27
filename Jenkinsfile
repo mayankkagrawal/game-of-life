@@ -6,7 +6,7 @@ pipeline {
             git credentialsId: 'github', url: 'https://github.com/mayankkagrawal/game-of-life'
            }
         }
-    stage (Maven build"){
+    stage ("Maven build"){
         steps {
            sh  "mvn clean package"
         }
